@@ -12,6 +12,12 @@ const app = express();
 
 // parse requests of content-type - application/json
 app.use(express.json());
+
+if(process.env.NODE_ENV === "production"){
+  app.use(express.static(path.join(__dirname, '/../frontend/build')));
+}
+
+
 app.use((req, res, next) => {
     console.log(`REQUEST RECEIVED!`);
     console.log(`  URL: ${req.path}`);
@@ -43,4 +49,4 @@ app.use("/user", user);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
-});
+}); 
