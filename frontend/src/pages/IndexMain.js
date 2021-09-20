@@ -13,7 +13,6 @@ const IndexMain = () => {
         <Main />
         <SectionOne />
         <SectionTwo />
-        <Footer />
       </>
     );
   };
