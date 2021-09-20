@@ -17,38 +17,41 @@ if(process.env.NODE_ENV === "production"){
   app.use(express.static(path.join(__dirname, '/../frontend/build'))); 
 }
 
+app.use("/user", user);
 
-app.use((req, res, next) => {
+
+
+/* app.use((req, res, next) => {
     console.log(`REQUEST RECEIVED!`);
     console.log(`  URL: ${req.path}`);
     console.log(`  PARAMS: ${JSON.stringify(req.params)}`);
     console.log(`  BODY: ${JSON.stringify(req.body, null, 2)}`);
     next();
-  });
-const corsOptions = {
+  }); */
+/* const corsOptions = {
   origin: "http://localhost:3000"
 };
-app.use(cors(corsOptions));  // enable CORS
+app.use(cors(corsOptions));  // enable CORS */
 
 
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to MigraCode Auth application." });
-});
-
-
-
-app.get("/welcome", (req, res) => {
-  res.json(usersDb); 
 }); 
 
+
+
+/* app.get("/welcome", (req, res) => {
+  res.json(usersDb); 
+}); 
+ */
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
 /* app.use("/user", user); */
 app.use("/user", user);
 
-
-app.listen(PORT, () => {
+app.listen(PORT, (err) => {
+  if(err) return console.log(err)
   console.log(`Server is running on port ${PORT}.`);
-}); 
+});
