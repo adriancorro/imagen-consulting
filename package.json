@@ -13,7 +13,7 @@
     "react-scripts": "^4.0.3",
     "web-vitals": "^2.1.0"
   },
-  "proxy": "https://https://imagen-consulting.herokuapp.com//",
+  "proxy": "https://imagen-consulting.herokuapp.com//",
   "scripts": {
     "frontend": "cd frontend && npm start",
     "dev": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run frontend\"",

@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 
 if(process.env.NODE_ENV === "production"){
-  app.use(express.static(path.join(__dirname, '/../frontend/build')));
+  app.use(express.static(path.join(__dirname, '/../frontend/build'))); 
 }
 
 
@@ -45,7 +45,9 @@ app.get("/welcome", (req, res) => {
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
+/* app.use("/user", user); */
 app.use("/user", user);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
