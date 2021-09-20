@@ -1,55 +1,25 @@
-const express = require("express");
+const express = require('express');
 const cors = require("cors");
-const usersDb = require("./database/db.json");   // import existing data from db.json file
-
-
-const user = require("./routes/user");
+const userRouter =  require('./routes/user')
+const path = require('path')
+// set port, listen for requests
+const PORT = process.env.PORT || 4000;
 // initializing express application
 const app = express();
 
+/* const corsOptions = {
+  origin: `https://`
+}; */
 
+/* app.use(cors(corsOptions)); */  // enable CORS */
 
-
-// parse requests of content-type - application/json
 app.use(express.json());
 
 if(process.env.NODE_ENV === "production"){
-  app.use(express.static(path.join(__dirname, '/../frontend/build'))); 
+    app.use(express.static(path.join(__dirname, '/../frontend/build')));
 }
 
-app.use("/user", user);
-
-
-
-/* app.use((req, res, next) => {
-    console.log(`REQUEST RECEIVED!`);
-    console.log(`  URL: ${req.path}`);
-    console.log(`  PARAMS: ${JSON.stringify(req.params)}`);
-    console.log(`  BODY: ${JSON.stringify(req.body, null, 2)}`);
-    next();
-  }); */
-/* const corsOptions = {
-  origin: "http://localhost:3000"
-};
-app.use(cors(corsOptions));  // enable CORS */
-
-
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to MigraCode Auth application." });
-}); 
-
-
-
-/* app.get("/welcome", (req, res) => {
-  res.json(usersDb); 
-}); 
- */
-
-// set port, listen for requests
-const PORT = process.env.PORT || 4000;
-/* app.use("/user", user); */
-app.use("/user", user);
+app.use("/user", userRouter);
 
 app.listen(PORT, (err) => {
   if(err) return console.log(err)

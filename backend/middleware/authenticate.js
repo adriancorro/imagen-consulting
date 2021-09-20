@@ -1,31 +1,24 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const user = require("../routes/user");
 
 
-function authenticate (req, res, next) {
-  // Get token from request headers
-  let token = req.header("authorization");
-  
-  // Check if token exists
-  if (!token) {
-    return res.status(403).send({ message: "authorization denied", isAuthenticated: false });
-  }
+const authenticate = async (req, res, next) => {
+    // console.log(req.header("authorization"))
+    let token = await req.header("authorization");
 
-  token = token.split(" ")[1];
-  
-  // Verify token using jwt
-  try {
-    /* this will return the user id (user:{id: user_id}) which we 
-    provided as payload while generating JWT token */
-    const verify = jwt.verify(token, process.env.jwtSecret);
-
-    req.user = verify.user;
-
-    next(); 
-    
-  } catch (err) {
-    res.status(401).send({ message: "Token is not valid", isAuthenticated: false });
-  }
+    if(!token) {
+        return res.status(403).send({message: "Authorization Denied", isAutheticated: false})
+    }
+ 
+    token = token.split(" ")[1] 
+    // console.log(token)
+    try {
+        const verify = jwt.verify(token, process.env.jwtSecret)
+        req.user = verify.user;
+        next();
+    } catch (error) {
+        res.status(401).send({message: "token is not valid", isAutheticated: false});
+    }
 };
-
-module.exports = authenticate;  // we export it to use it inside user router
+module.exports = authenticate;
