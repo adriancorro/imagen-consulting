@@ -1,4 +1,5 @@
 import React from "react";
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Main = () => {
     return (
@@ -8,8 +9,8 @@ const Main = () => {
                 <div className="cuadroparatextos">
                   <h1>Consultoría de imagen</h1>
                   <h4>Especialista en estilo</h4>
-                  <a className="boton" href="#section2">Lear More</a>
-                </div>
+                  <Link className="boton" to="/#section2">Learn More</Link>
+                </div> 
             </div>
         </div>
     </main>

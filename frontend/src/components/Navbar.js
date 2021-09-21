@@ -1,6 +1,7 @@
 import React from "react";
 import logo1 from '../assets/images/logo1.png'
 import menuhamburger from '../assets/svg/menuhamburger.svg'
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Navbar = () => {
     return (
@@ -14,8 +15,8 @@ const Navbar = () => {
                 <nav>
                   <ul>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#section2">Sobre mí</a></li>
-                    <li><a href="#section1">Servicios</a></li>
+                    <li><Link to="/#section2">Sobre mí</Link></li>
+                    <li><Link to="#section1">Servicios</Link></li>
                     <li><a href="#">Login</a></li>
                     <li><a href="#">Registro</a></li>
                   </ul>

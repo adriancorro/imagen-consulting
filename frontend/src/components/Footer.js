@@ -4,7 +4,7 @@ import facebookIcon from '../assets/svg/facebookIcon.svg'
 import instagramIcon from '../assets/svg/instagramIcon.svg'
 
 const Footer = () => {
-    return (
+    return ( 
         <footer>
             <div className="seccionfooter">
                 <p className="p1">Join us on.</p>

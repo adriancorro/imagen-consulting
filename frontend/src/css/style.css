@@ -365,7 +365,7 @@ align-self: end; Esto permite que se anule la alineación predeterminada
 
     .imgbordes{
         border-radius: 50%;
-        padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+        padding: 0.1rem 0.1rem 0.1rem 0.1rem;
         border: #d8d8d8 0.1rem solid
     }
 
